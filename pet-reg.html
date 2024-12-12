@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Your Pet</title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/pet-reg.css">
+</head>
+<body>
+    <div class="pet-reg-form">
+        <h1>Register Your Pet</h1>
+
+        <form id="petRegForm" method="POST" action="pet-reg.php" enctype="multipart/form-data">
+            <input type="text" name="pet_name" id="pet_name" placeholder="Pet Name" required>
+
+            <select name="category" id="category" required>
+                <option value="" disabled selected>Category</option>
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <input type="number" name="age" id="age" placeholder="Age" min="0" required>
+
+            <textarea name="description" id="description" placeholder="Description (Optional)"></textarea>
+
+            <select name="sex" id="sex" required>
+                <option value="" disabled selected>Sex</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <input type="file" name="photo" id="photo" accept="image/*">
+
+            <button type="submit" id="submitBtn">Register Pet</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById("submitBtn").addEventListener("click", function(event) {
+        const petName = document.getElementById("pet_name").value.trim();
+        const category = document.getElementById("category").value;
+        const age = document.getElementById("age").value;
+        const sex = document.getElementById("sex").value;
+
+        if (!petName || !category || !age || !sex) {
+            event.preventDefault();
+            alert("Please fill in all required fields.");
+        }
+    });
+    </script>
+</body>
+</html>
